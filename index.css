@@ -89,7 +89,14 @@ nav a:hover {
 .cta-button:hover {
     background-color: var(--navy-accent);
 }
-
+@media (max-width: 768px) {
+    .cta-button {
+        width: auto;
+        min-width: 120px;
+        text-align: center;
+        display: inline-block;
+    }
+}
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -725,7 +732,12 @@ footer {
     }
 
     .cta-buttons, .hero-buttons {
-        flex-direction: column;
+        width: auto;
+        min-width: 20px;
+        text-align: center;
+        display: inline-block;
+        padding: 12px 20px;
+        border-radius: 8px;
     }
 
     .pricing-card.popular {
