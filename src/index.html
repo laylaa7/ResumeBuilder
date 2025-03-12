@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeForge | Professional Resume Builder</title>
+    <link rel="stylesheet" href="/public/css/index.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-file-alt"></i>
+                <span>Resume</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#templates">Templates</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <i class="fas fa-sun icon"></i>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <i class="fas fa-moon icon"></i>
+            </div>
+            <a href="#" class="cta-button">Sign Up Free</a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+   
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <button class="close-btn">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#templates">Templates</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#" class="cta-button">Sign Up Free</a></li>
+        </ul>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text fade-in-up">
+                <h1>Craft Your Perfect <span>Resume</span> in Minutes</h1>
+                <p>Stand out from the crowd with professionally designed resume templates, expert-approved content suggestions, and an intuitive builder that makes resume creation seamless.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="cta-button primary">Create My Resume</a>
+                    <a href="#templates" class="cta-button secondary">View Templates</a>
+                </div>
+            </div>
+            <div class="hero-image fade-in-up">
+                <img src="/public/images/cvtemplate.png" alt="Resume Preview" class="resume-preview">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to create a standout professional resume that gets you noticed by recruiters</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Professional Templates</h3>
+                    <p>Choose from dozens of ATS-friendly, professionally designed templates that are tailored for your industry and career level.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>AI Content Suggestions</h3>
+                    <p>Get personalized content suggestions to highlight your skills and accomplishments with powerful action verbs and industry keywords.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-export"></i>
+                    </div>
+                    <h3>Multiple Export Options</h3>
+                    <p>Download your resume in PDF, DOCX, or TXT formats, or share it directly via a custom link with potential employers.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>ATS Compatibility</h3>
+                    <p>Our resumes are designed to pass through Applicant Tracking Systems, ensuring your application reaches human recruiters.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>Unlimited Revisions</h3>
+                    <p>Update your resume anytime with unlimited edits and versions to target different positions or industries.</p>
+                </div>
+                <div class="feature-card fade-in-up">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Privacy Protection</h3>
+                    <p>Your personal information is secure with end-to-end encryption and strict privacy controls that you manage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="templates" id="templates">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Resume Templates</h2>
+                <p>Select from our diverse collection of modern, professionally designed templates</p>
+            </div>
+            <div class="templates-grid">
+                <div class="template-card fade-in-up">
+                    <div class="template-image">
+                        <img src="/api/placeholder/300/400" alt="Executive Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Executive</h3>
+                        <p>Professional design ideal for senior positions and executives.</p>
+                        <a href="#" class="use-template">Use This Template</a>
+                    </div>
+                </div>
+                <div class="template-card fade-in-up">
+                    <div class="template-image">
+                        <img src="/api/placeholder/300/400" alt="Creative Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Creative</h3>
+                        <p>Modern layout perfect for design and creative industries.</p>
+                        <a href="#" class="use-template">Use This Template</a>
+                    </div>
+                </div>
+                <div class="template-card fade-in-up">
+                    <div class="template-image">
+                        <img src="/api/placeholder/300/400" alt="Technical Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Technical</h3>
+                        <p>Clean design with section highlighting for technical roles.</p>
+                        <a href="#" class="use-template">Use This Template</a>
+                    </div>
+                </div>
+                <div class="template-card fade-in-up">
+                    <div class="template-image">
+                        <img src="/api/placeholder/300/400" alt="Minimalist Template">
+                    </div>
+                    <div class="template-info">
+                        <h3>Minimalist</h3>
+                        <p>Simple, elegant design that lets your content stand out.</p>
+                        <a href="#" class="use-template">Use This Template</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="examples" id="examples">
+        <div class="container">
+            <div class="section-header">
+                <h2>Resume Examples</h2>
+                <p>Browse through actual resumes created with ResumeForge across different industries and experience levels</p>
+            </div>
+            <div class="examples-grid">
+                <div class="example-card fade-in-up">
+                    <div class="example-image">
+                        <img src="/api/placeholder/300/400" alt="Marketing Professional Resume">
+                        <div class="example-overlay">
+                            <a href="#" class="view-example" data-id="marketing">View Full Resume</a>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <h3>Marketing Professional</h3>
+                        <p>Modern template with emphasis on campaign metrics and digital marketing skills</p>
+                        <div class="example-tags">
+                            <span class="example-tag">Marketing</span>
+                            <span class="example-tag">Mid-Level</span>
+                            <span class="example-tag">Creative</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-card fade-in-up">
+                    <div class="example-image">
+                        <img src="/api/placeholder/300/400" alt="Software Developer Resume">
+                        <div class="example-overlay">
+                            <a href="#" class="view-example" data-id="developer">View Full Resume</a>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <h3>Software Developer</h3>
+                        <p>Technical template highlighting programming skills and project experience</p>
+                        <div class="example-tags">
+                            <span class="example-tag">Technical</span>
+                            <span class="example-tag">Senior</span>
+                            <span class="example-tag">IT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-card fade-in-up">
+                    <div class="example-image">
+                        <img src="/api/placeholder/300/400" alt="Finance Professional Resume">
+                        <div class="example-overlay">
+                            <a href="#" class="view-example" data-id="finance">View Full Resume</a>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <h3>Finance Professional</h3>
+                        <p>Executive template with focus on financial achievements and certifications</p>
+                        <div class="example-tags">
+                            <span class="example-tag">Finance</span>
+                            <span class="example-tag">Executive</span>
+                            <span class="example-tag">Corporate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="example-card fade-in-up">
+                    <div class="example-image">
+                        <img src="/api/placeholder/300/400" alt="Healthcare Resume">
+                        <div class="example-overlay">
+                            <a href="#" class="view-example" data-id="healthcare">View Full Resume</a>
+                        </div>
+                    </div>
+                    <div class="example-info">
+                        <h3>Healthcare Professional</h3>
+                        <p>Clean template showcasing qualifications, patient care experience, and medical skills</p>
+                        <div class="example-tags">
+                            <span class="example-tag">Healthcare</span>
+                            <span class="example-tag">Entry-Level</span>
+                            <span class="example-tag">Professional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   <!-- Pricing Section -->
+   <section class="pricing" id="pricing">
+    <div class="container">
+        <div class="section-header">
+            <h2>Choose Your Plan</h2>
+            <p>Select the perfect plan that suits your career needs and budget</p>
+        </div>
+        <div class="pricing-cards">
+            <div class="pricing-card fade-in-up">
+                <div class="pricing-header">
+                    <div class="pricing-name">Basic</div>
+                    <div class="pricing-price">Free<span></span></div>
+                    <span class="pricing-period">Forever</span>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> 1 Resume Template</li>
+                    <li><i class="fas fa-check"></i> PDF Downloads</li>
+                    <li><i class="fas fa-check"></i> Basic Content Suggestions</li>
+                    <li><i class="fas fa-check"></i> Email Support</li>
+                </ul>
+                <a href="#" class="pricing-cta">Get Started</a>
+            </div>
+            <div class="pricing-card popular fade-in-up">
+                <div class="pricing-header">
+                    <div class="pricing-name">Pro</div>
+                    <div class="pricing-price">$12<span>/month</span></div>
+                    <span class="pricing-period">Billed monthly or $99/year</span>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> All Premium Templates</li>
+                    <li><i class="fas fa-check"></i> Multiple Export Formats</li>
+                    <li><i class="fas fa-check"></i> Advanced AI Content Suggestions</li>
+                    <li><i class="fas fa-check"></i> Cover Letter Builder</li>
+                    <li><i class="fas fa-check"></i> Multiple Resume Versions</li>
+                    <li><i class="fas fa-check"></i> Priority Support</li>
+                </ul>
+                <a href="#" class="pricing-cta">Start 7-Day Free Trial</a>
+            </div>
+            <div class="pricing-card fade-in-up">
+                <div class="pricing-header">
+                    <div class="pricing-name">Enterprise</div>
+                    <div class="pricing-price">$29<span>/month</span></div>
+                    <span class="pricing-period">Billed monthly or $249/year</span>
+                </div>
+                <ul class="pricing-features">
+                    <li><i class="fas fa-check"></i> Everything in Pro</li>
+                    <li><i class="fas fa-check"></i> Career Coaching Session</li>
+                    <li><i class="fas fa-check"></i> LinkedIn Profile Optimization</li>
+                    <li><i class="fas fa-check"></i> Interview Preparation Tools</li>
+                    <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                </ul>
+                <a href="#" class="pricing-cta">Contact Sales</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Start Building Your Professional Resume Today</h2>
+            <p>Join thousands of job seekers who have successfully landed their dream jobs with ResumeForge</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button primary">Create My Resume</a>
+                <a href="#pricing" class="cta-button secondary">View Plans</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <i class="fas fa-file-alt"></i>
+                    <span>ResumeForge</span>
+                </div>
+                <p class="footer-about">
+                    We help job seekers build professional resumes to land their dream careers. Our platform combines modern design with AI-powered suggestions.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#templates">Templates</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Career Tips</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Contact Info</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>123 Resume Street, New York, NY 10001</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>support@resumeforge.com</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-title">Newsletter</h3>
+                <p>Subscribe to receive career tips and job search strategies</p>
+                <div class="newsletter">
+                    <form>
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 ResumeForge. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<div id="resumeModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <img class="modal-image" id="modalImage" src="" alt="Resume Preview">
+        <div class="modal-details">
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p class="modal-description" id="modalDescription"></p>
+            <div class="modal-actions">
+                <button class="modal-button" id="useTemplateBtn">Use This Template</button>
+                <button class="modal-button" id="downloadPdfBtn">Download PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!-- JavaScript -->
+<script src="/public/js/index.js">
+   
+</script>
+</body>
+</html>
