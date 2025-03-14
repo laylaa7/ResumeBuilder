@@ -855,6 +855,17 @@ background-color: #000000;
 body.dark-mode .hero {
 background: linear-gradient(135deg, #000000 0%, #1C3879 100%);
 }
+body.dark-mode .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #121212;
+    transform: skewY(-3deg);
+}
+
 
 body.dark-mode .features {
 background-color: #121212;
@@ -1180,3 +1191,4 @@ background-color: var(--navy-light);
     grid-template-columns: 1fr;
 }
 }
+

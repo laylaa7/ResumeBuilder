@@ -80,22 +80,22 @@ const resumeExamples = {
  marketing: {
      title: 'Marketing Professional Resume',
      description: 'This resume effectively showcases campaign metrics, digital marketing skills, and creative achievements. Perfect for mid-level marketing professionals looking to highlight their results-driven experience.',
-     image: '/api/placeholder/600/800'
+     image: 'public/images/marketing-template.png'
  },
  developer: {
      title: 'Software Developer Resume',
      description: 'This technical resume highlights programming languages, frameworks, project experience, and problem-solving skills. Ideal for senior developers who want to showcase their technical expertise and project achievements.',
-     image: '/api/placeholder/600/800'
+     image: 'public/images/sw-template.png'
  },
  finance: {
      title: 'Finance Professional Resume',
      description: 'An executive-style resume that emphasizes financial achievements, certifications, and leadership experience. Perfect for finance professionals aiming for senior positions in corporate environments.',
-     image: '/api/placeholder/600/800'
+     image: 'public/images/financial-template.png'
  },
  healthcare: {
      title: 'Healthcare Professional Resume',
      description: 'A clean, professional resume that showcases medical qualifications, patient care experience, and specialized skills. Great for entry-level healthcare professionals looking to establish their career.',
-     image: '/api/placeholder/600/800'
+     image: 'public/images/healthcare-template.webp'
  }
 };
 
