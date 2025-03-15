@@ -166,3 +166,6 @@ mobileExamplesItem.appendChild(mobileExamplesLink);
 // Insert before Pricing in mobile menu
 const mobilePricingItem = document.querySelector('.mobile-menu ul li a[href="#pricing"]').parentElement;
 mobileMenu.insertBefore(mobileExamplesItem, mobilePricingItem);
+
+
+

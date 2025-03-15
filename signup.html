@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Builder - Sign Up/Login</title>
+  <style>
+    :root {
+      --primary-color: #4a69bd;
+      --dark-bg: #101530;
+      --light-text: #ffffff;
+      --form-bg: #ffffff;
+      --form-text: #333333;
+      --input-border: #e0e0e0;
+      --input-focus: #4a69bd;
+      --button-hover: #3a59ad;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--dark-bg);
+      color: var(--light-text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 20px;
+      display: flex;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .info-panel {
+      background-color: var(--primary-color);
+      color: var(--light-text);
+      padding: 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .info-panel h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    
+    .info-panel p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    .benefits {
+      margin-top: 30px;
+    }
+    
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    
+    .benefit-icon {
+      width: 24px;
+      height: 24px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+    
+    .form-container {
+      background-color: var(--form-bg);
+      color: var(--form-text);
+      padding: 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .tabs {
+      display: flex;
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--input-border);
+    }
+    
+    .tab {
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #888;
+      position: relative;
+    }
+    
+    .tab.active {
+      color: var(--primary-color);
+    }
+    
+    .tab.active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: var(--primary-color);
+      bottom: -1px;
+      left: 0;
+    }
+    
+    .form-content {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #555;
+    }
+    
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--input-border);
+      border-radius: 4px;
+      font-size: 15px;
+      transition: border 0.3s;
+    }
+    
+    input:focus {
+      outline: none;
+      border-color: var(--input-focus);
+    }
+    
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      font-size: 14px;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+    }
+    
+    .checkbox-group input {
+      width: auto;
+      margin-right: 8px;
+    }
+    
+    .forgot-link {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .submit-btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 4px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .submit-btn:hover {
+      background-color: var(--button-hover);
+    }
+    
+    .social-login {
+      margin-top: 30px;
+      text-align: center;
+    }
+    
+    .social-login p {
+      color: #777;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    
+    .social-login p::before,
+    .social-login p::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 40%;
+      height: 1px;
+      background-color: #e0e0e0;
+    }
+    
+    .social-login p::before {
+      left: 0;
+    }
+    
+    .social-login p::after {
+      right: 0;
+    }
+    
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #f8f8f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e0e0e0;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    
+    .social-btn:hover {
+      transform: translateY(-3px);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        width: 90%;
+      }
+      
+      .info-panel, .form-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="info-panel">
+      <h2>Join Thousands of Successful Job Seekers</h2>
+      <p>Create a professional resume in minutes and land your dream job faster.</p>
+      
+      <div class="benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon">✓</div>
+          <span>Expert-approved templates</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">✓</div>
+          <span>Smart content suggestions</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">✓</div>
+          <span>ATS-friendly formats</span>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">✓</div>
+          <span>Download in multiple formats</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-container">
+      <div class="tabs">
+        <div class="tab active">Sign Up</div>
+        <div class="tab">Login</div>
+      </div>
+      
+      <div class="form-content">
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com">
+        </div>
+        
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="Enter your password">
+        </div>
+        
+        <div class="input-group">
+          <label for="confirm-password">Confirm Password</label>
+          <input type="password" id="confirm-password" placeholder="Confirm your password">
+        </div>
+        
+        <div class="remember-forgot">
+          <div class="checkbox-group">
+            <input type="checkbox" id="terms">
+            <label for="terms">I agree to the Terms and Privacy Policy</label>
+          </div>
+        </div>
+        
+        <button class="submit-btn">Create Account</button>
+        
+        <div class="social-login">
+          <p>Or continue with</p>
+          <div class="social-buttons">
+            <div class="social-btn">G</div>
+            <div class="social-btn">f</div>
+            <div class="social-btn">in</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
