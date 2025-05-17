@@ -9,437 +9,481 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #64748b;
-            --light: #f8fafc;
-            --dark: #0f172a;
-            --gray: #e2e8f0;
-            --success: #10b981;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-
-        body {
-            background-color: #f1f5f9;
-            color: var(--dark);
-            min-height: 100vh;
-            line-height: 1.6;
-        }
-
-        .app-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        /* Header Styles */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--gray);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .logo-icon {
-            font-size: 1.75rem;
-        }
-
-        .controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        /* Main Layout */
-        .builder-container {
-            display: grid;
-            grid-template-columns: 400px 1fr;
-            gap: 2rem;
-        }
-
-        /* Form Panel */
-        .form-panel {
-            background: white;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            height: fit-content;
-            position: sticky;
-            top: 1rem;
-        }
-
-        .form-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--gray);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .section-title i {
-            font-size: 1rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--gray);
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            transition: all 0.2s;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        /* Preview Panel */
-        .preview-panel {
-            background: white;
-            border-radius: 0.75rem;
-            padding: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            min-height: 90vh;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            border-radius: 0.5rem;
-            font-weight: 500;
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-        }
-
-        .btn-primary {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-dark);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            border: 1px solid var(--gray);
-            color: var(--dark);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--gray);
-        }
-
-        .btn-success {
-            background-color: var(--success);
-            color: white;
-        }
-
-        .btn-icon {
-            padding: 0.5rem;
-            border-radius: 50%;
-        }
-
-        /* Dynamic List Items */
-        .dynamic-list {
-            margin-top: 1rem;
-        }
-
-        .list-item {
-            background-color: #f8fafc;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            border-radius: 0.5rem;
-            position: relative;
-            border: 1px solid var(--gray);
-        }
-
-        .remove-btn {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            background: none;
-            border: none;
-            color: var(--danger);
-            cursor: pointer;
-            font-size: 1rem;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
-
-        .remove-btn:hover {
-            background-color: rgba(239, 68, 68, 0.1);
-        }
-
-        /* Resume Preview Styles */
-        .resume-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .resume-name {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.25rem;
-        }
-
-        .resume-title {
-            font-size: 1.25rem;
-            color: var(--secondary);
-            margin-bottom: 0.75rem;
-        }
-
-        .resume-contact {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-            font-size: 0.875rem;
-            color: var(--secondary);
-        }
-
-        .resume-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .section-title-resume {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.25rem;
-            border-bottom: 1px solid var(--gray);
-        }
-
-        .experience-item, .education-item {
-            margin-bottom: 1rem;
-        }
-
-        .experience-header, .education-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.25rem;
-        }
-
-        .experience-title, .education-degree {
-            font-weight: 600;
-            font-size: 1.1rem;
-        }
-
-        .experience-company, .education-institution {
-            font-weight: 500;
-            color: var(--primary);
-        }
-
-        .experience-duration, .education-duration {
-            color: var(--secondary);
-            font-size: 0.875rem;
-        }
-
-        .experience-description {
-            margin-top: 0.5rem;
-            font-size: 0.9375rem;
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background-color: var(--primary);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.8125rem;
-        }
-
-        /* Template Specific Styles */
-        .template-executive .resume-header {
-            text-align: left;
-            border-bottom: none;
-        }
-
-        .template-executive .resume-name {
-            color: var(--dark);
-        }
-
-        .template-executive .section-title-resume {
-            border-bottom: 2px solid var(--dark);
-            color: var(--dark);
-        }
-
-        .template-executive .experience-company {
-            color: var(--dark);
-        }
-
-        .template-creative .resume-header {
-            background-color: var(--primary);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            color: white;
-            margin-bottom: 2rem;
-        }
-
-        .template-creative .resume-name,
-        .template-creative .resume-title,
-        .template-creative .resume-contact {
-            color: white;
-        }
-
-        .template-creative .section-title-resume {
-            color: var(--primary);
-        }
-
-        .template-minimalist .resume-header {
-            text-align: left;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .template-minimalist .resume-name {
-            font-weight: 400;
-            letter-spacing: -0.5px;
-        }
-
-        .template-minimalist .section-title-resume {
-            font-weight: 400;
-            border-bottom: none;
-            color: var(--dark);
-        }
-
-        .template-technical .resume-header {
-            text-align: left;
-            border-bottom: none;
-        }
-
-        .template-technical .resume-name {
-            font-family: 'Courier New', monospace;
-        }
-
-        .template-technical .section-title-resume {
-            font-family: 'Courier New', monospace;
-            border-bottom: 1px dashed var(--gray);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .builder-container {
-                grid-template-columns: 1fr;
-            }
-
-            .form-panel {
-                position: static;
-            }
-        }
-
-        /* Loading Spinner */
-        .spinner {
-            display: none;
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Template Selector */
-        .template-selector {
-            position: relative;
-        }
-
-        .template-selector select {
-            appearance: none;
-            padding: 0.5rem 2rem 0.5rem 1rem;
-            background-color: white;
-            border: 1px solid var(--gray);
-            border-radius: 0.5rem;
-            font-size: 0.875rem;
-            cursor: pointer;
-        }
-
-        .template-selector::after {
-            content: "▼";
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.625rem;
-            color: var(--secondary);
-            pointer-events: none;
-        }
-
-        /* Action Buttons */
-        .action-buttons {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
+    --primary: #4a6bff;
+    --primary-light: #7a91ff;
+    --primary-dark: #3a5bef;
+    --primary-darker: #2a4bdf;
+    --secondary: #64748b;
+    --secondary-light: #94a3b8;
+    --light: #f8fafc;
+    --dark: #0f172a;
+    --dark-light: #1e293b;
+    --gray: #e2e8f0;
+    --gray-dark: #cbd5e1;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --accent: #4a6bff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+    background-color: #f1f5f9;
+    color: var(--dark);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.logo-icon {
+    font-size: 1.75rem;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Main Layout */
+.builder-container {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    gap: 2rem;
+}
+
+/* Form Panel */
+.form-panel {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 1rem;
+}
+
+.form-section {
+    margin-bottom: 1.5rem;
+}
+
+.section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-title i {
+    font-size: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.1);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Preview Panel */
+.preview-panel {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    min-height: 90vh;
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--gray);
+    color: var(--dark);
+}
+
+.btn-outline:hover {
+    background-color: var(--gray);
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: white;
+}
+
+.btn-icon {
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+/* Dynamic List Items */
+.dynamic-list {
+    margin-top: 1rem;
+}
+
+.list-item {
+    background-color: #f8fafc;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 0.5rem;
+    position: relative;
+    border: 1px solid var(--gray);
+}
+
+.remove-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 1rem;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.remove-btn:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Resume Preview Styles */
+.resume-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.resume-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.25rem;
+}
+
+.resume-title {
+    font-size: 1.25rem;
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+}
+
+.resume-contact {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    color: var(--secondary);
+}
+
+.resume-section {
+    margin-bottom: 1.5rem;
+}
+
+.section-title-resume {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--gray);
+}
+
+.experience-item, .education-item {
+    margin-bottom: 1rem;
+}
+
+.experience-header, .education-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+}
+
+.experience-title, .education-degree {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.experience-company, .education-institution {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.experience-duration, .education-duration {
+    color: var(--secondary);
+    font-size: 0.875rem;
+}
+
+.experience-description {
+    margin-top: 0.5rem;
+    font-size: 0.9375rem;
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.skill-tag {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+}
+
+/* Template Specific Styles */
+.template-executive .resume-header {
+    text-align: left;
+    border-bottom: none;
+}
+
+.template-executive .resume-name {
+    color: var(--dark);
+}
+
+.template-executive .section-title-resume {
+    border-bottom: 2px solid var(--dark);
+    color: var(--dark);
+}
+
+.template-executive .experience-company {
+    color: var(--dark);
+}
+
+.template-creative .resume-header {
+    background-color: var(--primary);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    color: white;
+    margin-bottom: 2rem;
+}
+
+.template-creative .resume-name,
+.template-creative .resume-title,
+.template-creative .resume-contact {
+    color: white;
+}
+
+.template-creative .section-title-resume {
+    color: var(--primary-light);
+}
+
+.template-minimalist .resume-header {
+    text-align: left;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.template-minimalist .resume-name {
+    font-weight: 400;
+    letter-spacing: -0.5px;
+}
+
+.template-minimalist .section-title-resume {
+    font-weight: 400;
+    border-bottom: none;
+    color: var(--dark);
+}
+
+.template-technical .resume-header {
+    text-align: left;
+    border-bottom: none;
+}
+
+.template-technical .resume-name {
+    font-family: 'Courier New', monospace;
+}
+
+.template-technical .section-title-resume {
+    font-family: 'Courier New', monospace;
+    border-bottom: 1px dashed var(--gray);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .builder-container {
+        grid-template-columns: 1fr;
+    }
+
+    .form-panel {
+        position: static;
+    }
+}
+
+/* Loading Spinner */
+.spinner {
+    display: none;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Template Selector */
+.template-selector {
+    position: relative;
+}
+
+.template-selector select {
+    appearance: none;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid var(--gray);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.template-selector::after {
+    content: "▼";
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.625rem;
+    color: var(--secondary);
+    pointer-events: none;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+/* Additional Color Palette Elements */
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.border-primary {
+    border-color: var(--primary);
+}
+
+.hover\:bg-primary-dark:hover {
+    background-color: var(--primary-dark);
+}
+
+.focus\:ring-primary:focus {
+    box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.3);
+}
+
+/* Gradient Backgrounds */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+}
+
+/* Shadows */
+.shadow-primary {
+    box-shadow: 0 4px 6px -1px rgba(74, 107, 255, 0.1), 0 2px 4px -1px rgba(74, 107, 255, 0.06);
+}
+
+/* Transitions */
+.transition-colors {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
     </style>
 </head>
 <body class="template-default">
