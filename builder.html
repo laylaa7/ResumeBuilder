@@ -255,8 +255,28 @@
                 max-height: none;
             }
         }
+
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin: 0 auto;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--accent-color);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Include jsPDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
     <header>
@@ -347,13 +367,14 @@
                 <button class="btn" onclick="resetForm()">
                     <i class="fas fa-redo"></i> Reset
                 </button>
-                <button class="btn btn-success" onclick="downloadPDF()">
+                <button class="btn btn-success" onclick="generatePDF()" id="downloadBtn">
                     <i class="fas fa-download"></i> Download PDF
                 </button>
+                <div class="spinner" id="spinner"></div>
             </div>
         </div>
 
-        <div class="preview-container">
+        <div class="preview-container" id="resumePreview">
             <h2 id="previewName">Your Name</h2>
             <p id="previewJobTitle" style="color: var(--secondary-color); font-size: 1.2rem; margin-bottom: 1rem;">Job Title</p>
             
@@ -409,6 +430,9 @@
     </div>
 
     <script>
+        // Initialize jsPDF
+        const { jsPDF } = window.jspdf;
+        
         let experienceCount = 0;
         let educationCount = 0;
         let certificationCount = 0;
@@ -731,9 +755,59 @@
             updatePreview();
         }
     
-        function downloadPDF() {
-            alert('PDF download feature would be implemented here. In a real application, this would generate and download a PDF version of the resume.');
-            // In a production environment, you would use a library like html2pdf.js, jsPDF, or a backend service to generate the PDF
+        function generatePDF() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            const spinner = document.getElementById('spinner');
+            
+            // Show loading spinner
+            downloadBtn.style.display = 'none';
+            spinner.style.display = 'block';
+            
+            // Get the resume preview element
+            const element = document.getElementById('resumePreview');
+            
+            // Use html2canvas to capture the resume as an image
+            html2canvas(element, {
+                scale: 2, // Higher quality
+                logging: false,
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                // Create PDF
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210; // A4 width in mm
+                const pageHeight = 295; // A4 height in mm
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                // Add new pages if the content is longer than one page
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                // Download the PDF
+                const fileName = document.getElementById('fullName').value || 'resume';
+                pdf.save(`${fileName}_resume.pdf`);
+                
+                // Hide spinner and show button again
+                spinner.style.display = 'none';
+                downloadBtn.style.display = 'inline-block';
+            }).catch(error => {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+                
+                // Hide spinner and show button again
+                spinner.style.display = 'none';
+                downloadBtn.style.display = 'inline-block';
+            });
         }
     
         function toggleDarkMode() {
@@ -749,5 +823,5 @@
         addExperience();
         addEducation();
     </script>
-    </body>
-    </html>
+</body>
+</html>
